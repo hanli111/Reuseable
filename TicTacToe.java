@@ -157,7 +157,7 @@ public class TicTacToe
         }
         return false;*/
         
-        if (array[0][0].equals("X") || array[0][0].equals("O")) {
+        if (array[0][1].equals("X") || array[0][0].equals("O")) {
             if (array[0][2].equals(array[1][1]) && array[1][1].equals(array[2][0])) {
                 return true;
             }
