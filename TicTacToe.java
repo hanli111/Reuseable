@@ -141,29 +141,27 @@ public class TicTacToe
    public boolean checkDiag()
    {
         //checks right to left diagonal
-        /*int x = 0;
+        int x = 0;
         int o = 0;
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 2; j >= 0; j--) {
-                if (array[i][j].equals("X")) {
-                    x++;
-                } else if (array[i][j].equals("O")) {
-                    o++;
-                }
+        for (int i = 0, j = 2; i < array.length; i++, j--) {
+            if (array[i][j].equals("X")) {
+                x++;
+            } else if (array[i][j].equals("O")) {
+                o++;
             }
         }
         
         if (x == 3 || o == 3) {
             return true;
         }
-        return false;*/
+        return false;
         
-        if (array[0][1].equals("X") || array[0][0].equals("O")) {
+        /*if (array[0][1].equals("X") || array[0][0].equals("O")) {
             if (array[0][2].equals(array[1][1]) && array[1][1].equals(array[2][0])) {
                 return true;
             }
         }
-        return false;
+        return false;*/
    }
    
    public boolean checkDiag2() {
