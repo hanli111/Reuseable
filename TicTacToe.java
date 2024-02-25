@@ -2,9 +2,10 @@ public class TicTacToe
 {
    //copy over your methods from the Tic Tac Toe Methods activity in the previous lesson!
    private int turn;
-   private String[][] array = new String[3][3];
+   private String[][] array;
     
     public TicTacToe() {
+        array = new String[3][3];
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array.length; j++) {
                 array[i][j] = "-";
