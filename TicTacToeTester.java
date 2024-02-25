@@ -10,7 +10,7 @@ public class TicTacToeTester
         game.printBoard();
         
         Scanner input = new Scanner(System.in);
-        while (!game.checkWin()) {
+        while (!game.checkWin() && game.getTurn() < 9) {
             System.out.println("It is Player " + game.getName() + "'s turn.");
             System.out.println("What row would you like to choose?");
             int userRowIndex = input.nextInt();
