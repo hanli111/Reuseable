@@ -13,6 +13,9 @@ int count(vector<double> v) {
 }
 
 double sum(vector<double> v) {
+    // Make sure v is not empty
+    assert(!v.empty());
+
     double total = 0;
 
     // Loops through the vector and adds all elements together
@@ -23,6 +26,9 @@ double sum(vector<double> v) {
 }
 
 double mean(vector<double> v) {
+    // Make sure v is not empty
+    assert(!v.empty());
+
     double totalNumber = count(v);
     double sumVal = sum(v);
 
@@ -32,6 +38,9 @@ double mean(vector<double> v) {
 }
 
 double median(vector<double> v) {
+    // Make sure v is not empty
+    assert(!v.empty());
+
     sort(v.begin(), v.end());
 
     // Check is vector is odd
@@ -45,6 +54,9 @@ double median(vector<double> v) {
 }
 
 double min(vector<double> v) {
+    // Make sure v is not empty
+    assert(!v.empty());
+
     sort(v.begin(), v.end());
 
     // Return first element, which is the minimum since the vector is sorted least to greatest
@@ -52,6 +64,9 @@ double min(vector<double> v) {
 }
 
 double max(vector<double> v) {
+    // Make sure v is not empty
+    assert(!v.empty());
+
     sort(v.begin(), v.end());
 
     // Return last element, which is the maximum since the vector is sorted least to greatest
@@ -59,6 +74,9 @@ double max(vector<double> v) {
 }
 
 double stdev(vector<double> v) {
+    // Make sure v has at least 2 elements
+    assert(v.size() >= 2);
+
     double average = mean(v);
     double STD = 0;
 
@@ -71,20 +89,36 @@ double stdev(vector<double> v) {
 }
 
 double percentile(vector<double> v, double p) {
+    // Make sure v is not empty
+    assert(!v.empty());
+
+    // Make sure p is between 0 and 1
+    assert(p >= 0 && p <= 1);
+
     sort(v.begin(), v.end());
-    double rank = p * (v.size() - 1) + 1;
+    double rank = p * (v.size() - 1);
     double intpart = 0;
     double fractpart = 0;
+
+    if (p == 1) {
+        fractpart = 0;
+    }
 
     // Split rank into an integer and decimal portion
     fractpart = modf(rank, &intpart);
 
     // Calculates percentile
-    double percentile = v[intpart - 1] + fractpart * (v[intpart] - v[intpart - 1]);
+    size_t low = static_cast<size_t> (intpart);
+    size_t up = min(low + 1, v.size() - 1);
+
+    double percentile = v[low] + fractpart * (v[up] - v[low]);
     return percentile;
 }
 
 vector<double> filter(vector<double> v, vector<double> criteria, double target) {
+    // Make sure v and criteria have the same # of elements
+    assert(v.size() == criteria.size());
+
     vector<double> result;
 
     // Loops through the criteria vector and if an element is equal to target, the result vector would add the element from the v vector's index
